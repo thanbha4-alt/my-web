@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من حمص | المنصة الذكية للمنتجات الريفية والحرفية</title>
+    <!-- CSS Fonts & Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2d5a27; /* أخضر زراعي */
+            --primary-light: #4caf50;
+            --accent: #d4a373; /* لون نحاسي/فخاري */
+            --accent-hover: #bc8a5f;
+            --bg-light: #f8f9fa;
+            --text-dark: #2b2d42;
+            --text-muted: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #23471f;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #e63946;
+            color: var(--white);
+            font-size: 0.75rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 5% 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .search-box input {
+            border: none;
+            padding: 10px 20px;
+            flex: 1;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        /* AI Feature Highlight Banner */
+        .ai-banner {
+            background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
+            color: var(--white);
+            padding: 20px 5%;
+            margin: 30px 5%;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+
+        .ai-banner-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ai-banner i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        /* Section Layouts */
+        .section {
+            padding: 50px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent);
+            position: absolute;
+            bottom: -8px;
+            left: 25%;
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Product Cards */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .product-origin {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* Producer Dashboard Preview Section */
+        .dashboard-section {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+
+        .dash-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .metric-card h4 {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .metric-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 5px;
+        }
+
+        /* Smart AI Recognition Box */
+        .ai-upload-box {
+            border: 2px dashed var(--accent);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            background: #fffdfa;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .ai-upload-box:hover {
+            background: #fdf7f0;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .team-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .team-card h4 {
+            font-weight: 700;
+        }
+
+        .team-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e3d1a;
+            color: var(--white);
+            padding: 40px 5% 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .ai-banner {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-wheat-awn"></i>
+            من حمص
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#categories">التصنيفات</a></li>
+            <li><a href="#products">المنتجات</a></li>
+            <li><a href="#producer-dash">لوحة المنتجين</a></li>
+            <li><a href="#ai-features">الذكاء الاصطناعي</a></li>
+            <li><a href="#team">فريق العمل</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge">3</span>
+            </div>
+            <a href="#producer-dash" class="btn btn-primary">
+                <i class="fa-solid fa-store"></i> دخول المنتجين
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>من خيرات ريف حمص.. مباشرة إلى بيتك</h1>
+        <p>المنصة الذكية الأولى للربط المباشر بين المزارعين والحرفيين في محافظة حمص وبين المستهلكين بأحدث تقنيات الذكاء الاصطناعي.</p>
+        <div class="search-box">
+            <input type="text" placeholder="ابحث عن مونة، زيت زيتون، فخار، نحاسيات...">
+            <button class="btn btn-accent"><i class="fa-solid fa-magnifying-glass"></i> بحث</button>
+        </div>
+    </section>
+
+    <!-- AI Feature Banner -->
+    <div class="ai-banner" id="ai-features">
+        <div class="ai-banner-content">
+            <i class="fa-solid fa-brain"></i>
+            <div>
+                <h3>مدعوم بالذكاء الاصطناعي والتصنيف الآلي</h3>
+                <p>نظام ذكي للتعرف على المنتجات عبر الصور، وتوصيات مخصصة حسب الموسم وأقصر مسار توصيل لوجستي.</p>
+            </div>
+        </div>
+        <button class="btn btn-accent" onclick="alert('سيتم فتح أداة فحص الصور الذكية!')">تجربة التصنيف الآلي</button>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="section" id="categories">
+        <div class="section-title">
+            <h2>تصنيفات المنتجات</h2>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <i class="fa-solid fa-jar"></i>
+                <h3>الأغذية والمونة</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-oil-can"></i>
+                <h3>زيت الزيتون</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-apple-whole"></i>
+                <h3>خضار وفواكه طازجة</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-whiskey-glass"></i>
+                <h3>الأواني الفخارية</h3>
+            </div>
+            <div class="category-card">
+                <i class="fa-solid fa-shield-cat"></i>
+                <h3>النحاسيات والتراث</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" id="products">
+        <div class="section-title">
+            <h2>أحدث المنتجات الريفية والحرفية</h2>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <span class="product-badge">طازج</span>
+                <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=500&q=80" alt="زيت زيتون" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">زيت زيتون معصور على البارد (بكر ممتاز)</div>
+                    <div class="product-origin"><i class="fa-solid fa-location-dot"></i> ريف حمص الغربي - القصير</div>
+                    <div class="product-bottom">
+                        <span class="price">150,000 ل.س / صفيحة</span>
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> إضافة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <span class="product-badge">مونة حمصية</span>
+                <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=500&q=80" alt="مكدوس" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">مكدوس حمصي شغل يدوي بلدي</div>
+                    <div class="product-origin"><i class="fa-solid fa-location-dot"></i> ريف حمص - السخنة</div>
+                    <div class="product-bottom">
+                        <span class="price">45,000 ل.س / كغ</span>
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> إضافة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <span class="product-badge">حرف يدوية</span>
+                <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=500&q=80" alt="إبريق فخار" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">إبريق فخاري تراثي للماء</div>
+                    <div class="product-origin"><i class="fa-solid fa-location-dot"></i> حمص القديمة - الحرفيين</div>
+                    <div class="product-bottom">
+                        <span class="price">30,000 ل.س</span>
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> إضافة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <span class="product-badge">تراث</span>
+                <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=500&q=80" alt="صينية نحاس" class="product-img">
+                <div class="product-info">
+                    <div class="product-title">صينية نحاسية مزخرفة يدوياً</div>
+                    <div class="product-origin"><i class="fa-solid fa-location-dot"></i> حمص - سوق النحاسين</div>
+                    <div class="product-bottom">
+                        <span class="price">85,000 ل.س</span>
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> إضافة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Producer Dashboard Preview & Smart Upload -->
+    <section class="section" id="producer-dash">
+        <div class="section-title">
+            <h2>لوحة تحكم المنتجين والرفع الذكي</h2>
+        </div>
+        <div class="dashboard-section">
+            <h3>مرحباً بك، المزارع / الحرفي (معاينة المتجر)</h3>
+            <p style="color: var(--text-muted);">تابع مبيعاتك وأضف منتجات جديدة بسهولة عبر الذكاء الاصطناعي</p>
+            
+            <div class="dash-metrics">
+                <div class="metric-card">
+                    <h4>إجمالي المبيعات</h4>
+                    <div class="value">1,250,000 ل.س</div>
+                </div>
+                <div class="metric-card">
+                    <h4>الطلبات المعلقة</h4>
+                    <div class="value">5 طلبات</div>
+                </div>
+                <div class="metric-card">
+                    <h4>التقييم العام</h4>
+                    <div class="value">4.9 / 5 <i class="fa-solid fa-star" style="color: gold; font-size: 1.2rem;"></i></div>
+                </div>
+            </div>
+
+            <!-- AI Image Recognition Upload Area -->
+            <div class="ai-upload-box" onclick="document.getElementById('file-input').click();">
+                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 3rem; color: var(--accent); margin-bottom: 10px;"></i>
+                <h4>رفع صورة المنتج للتصنيف التلقائي بالذكاء الاصطناعي (Image Recognition)</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">اسحب الصورة هنا أو اضغط للاختيار. سيقوم النظام بتحديد نوع المنتج (زيت، مكدوس، فخار) واقتراح السعر تلقائياً!</p>
+                <input type="file" id="file-input" style="display: none;" onchange="handleFileUpload(this)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Team Section -->
+    <section class="section" id="team">
+        <div class="section-title">
+            <h2>فريق عمل المشروع</h2>
+            <p style="color: var(--text-muted); margin-top: 5px;">المعهد التقاني للحاسوب - جامعة حمص 2026</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <i class="fa-solid fa-server"></i>
+                <h4>بهاء الدين الطحان</h4>
+                <p>مطور الـ Backend وتصميم قاعدة البيانات</p>
+            </div>
+            <div class="team-card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h4>إسماعيل القرين</h4>
+                <p>مطور الـ Frontend وتطبيق الجوال (Flutter)</p>
+            </div>
+            <div class="team-card">
+                <i class="fa-solid fa-robot"></i>
+                <h4>محمد أبو حبلة</h4>
+                <p>مهندس الذكاء الاصطناعي والتوصيات</p>
+            </div>
+            <div class="team-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h4>خالد الخضر</h4>
+                <p>مطور واجهات الويب واختبار الجودة (QA)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>عن منصة من حمص</h3>
+                <p>مشروع تخرج يهدف لتمكين الأسر المنتجة والمزارعين والحرفيين في محافظة حمص، وإلغاء دور الوسيط الخارجي عبر حلول تقنية وذكاء اصطناعي متكامل.</p>
+            </div>
+            <div class="footer-col">
+                <h3>روابط سريعة</h3>
+                <p><a href="#home" style="color: #ccc; text-decoration: none;">الرئيسية</a></p>
+                <p><a href="#products" style="color: #ccc; text-decoration: none;">تصفح المنتجات</a></p>
+                <p><a href="#producer-dash" style="color: #ccc; text-decoration: none;">دخول المنتجين</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>تواصل معنا</h3>
+                <p><i class="fa-solid fa-location-dot"></i> حمص، سوريا</p>
+                <p><i class="fa-solid fa-envelope"></i> info@minhoms.sy</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 - مشروع منصة "من حمص" الذكية</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        function handleFileUpload(input) {
+            if (input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                alert('جاري تحليل الصورة بواسطة الذكاء الاصطناعي (PyTorch/TensorFlow)...\nتم التعرف على المنتج بناءً على الصورة: ' + fileName);
+            }
+        }
+    </script>
+</body>
+</html>
+
